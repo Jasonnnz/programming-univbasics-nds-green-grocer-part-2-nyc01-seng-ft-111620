@@ -6,8 +6,13 @@ def apply_coupons(cart, coupons)
   # REMEMBER: This method **should** update cart
   coupons.each do |coupon|
     name = coupon[:item] 
+    cost_per = coupon[:cost]/coupon[:num]
     cart.each do |item|
-      if item["#{name} W/COUPON"] && item["#{name} W/COUPON"][:count] 
+      if item[:item] == name && item[:count] >= coupon[:num]
+        cart << {:item => "#{name} W/COUPON", :price => cost_per, :clearance => item[:clearance], :count => coupon[:num]}
+        item[:count] -= coupon[:num]
+      end
+    end
   end
 end
 
