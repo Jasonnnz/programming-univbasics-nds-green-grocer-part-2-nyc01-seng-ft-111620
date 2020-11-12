@@ -9,15 +9,11 @@ def apply_coupons(cart, coupons)
       name = coupon[:item]
       amount = coupon[:num]
       cost_per = coupon[:cost]/amount
-      if cart["#{name} W/COUPON"] && cart["#{name} W/COUPON"][:count] >= coupon[:num]
-          cart["#{name} W/COUPON"][:count] += 1 
-      else 
-        cart["#{name} W/COUPON"] = {:price => cost_per, :clearance => cart[name][:clearance], :count => 1}
-      end
-    cart[name][:count] -= amount  
+      cart.each do |grocery|
+        
+      
     end
   end
-  cart
 end
 
 def apply_clearance(cart)
