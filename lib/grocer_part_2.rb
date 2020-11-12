@@ -10,8 +10,12 @@ def apply_coupons(cart, coupons)
       amount = coupon[:num]
       cost_per = coupon[:cost]/amount
       cart.each do |grocery|
-        
-      
+        if grocery["#{name} W/COUPON"] && grocery["#{name} W/COUPON"][:count] >= coupon[:num]
+          grocery["#{name} W/COUPON"][:count] += 1 
+        else 
+          grocery["#{name} W/COUPON"] = {:price => cost_per, :clearance => grocery[:clearance], :count => amount}
+        end
+      cart[name][:count] -= amount  
     end
   end
 end
