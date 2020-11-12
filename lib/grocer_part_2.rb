@@ -7,7 +7,7 @@ def apply_coupons(cart, coupons)
   coupons.each do |coupon|
     name = coupon[:item] 
     cart.each do |item|
-      if item["#{name} W/COUPON"] && item["#{name} W/COUPON"][:count]
+      if item["#{name} W/COUPON"] && item["#{name} W/COUPON"][:count] 
   end
 end
 
